@@ -1,0 +1,3 @@
+export default function SectionHeading({ eyebrow, title, description, action }) {
+    return <div className="mb-6 flex flex-wrap items-end justify-between gap-3"><div>{eyebrow && <p className="mb-2 text-[11px] font-bold uppercase tracking-[.18em] text-[#bd527b]">{eyebrow}</p>}<h1 className="font-editorial text-3xl text-[#493640] md:text-4xl">{title}</h1>{description && <p className="mt-2 max-w-2xl text-sm leading-6 text-[#927d87]">{description}</p>}</div>{action}</div>
+  }

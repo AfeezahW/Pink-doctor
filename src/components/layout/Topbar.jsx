@@ -1,0 +1,6 @@
+import { Menu, Search } from 'lucide-react'
+import { useApp } from '../../context/AppContext'
+export default function Topbar({ onMenu }) {
+  const { name } = useApp()
+  return <header className="sticky top-0 z-30 flex h-[76px] items-center justify-between border-b border-[#f2e7eb] bg-[#fffafb]/90 px-5 backdrop-blur md:px-8"><div className="flex items-center gap-3"><button onClick={onMenu} className="rounded-lg p-2 text-[#896f7b] hover:bg-[#fff0f5] lg:hidden"><Menu size={20}/></button><div className="hidden items-center gap-2 rounded-xl border border-[#f0e3e8] bg-white px-3 py-2 text-sm text-[#ad9aa2] sm:flex"><Search size={15}/><span>Clinical learning space</span></div><span className="text-sm text-[#ad9aa2] sm:hidden">Clinical learning space</span></div><div className="flex items-center gap-3"><div className="hidden text-right sm:block"><p className="text-xs font-semibold text-[#58434e]">{name}</p><p className="text-[10px] text-[#a58f99]">Medical student</p></div><div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f4dce6] text-xs font-bold text-[#984466]">{name.split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase() || 'MS'}</div></div></header>
+}

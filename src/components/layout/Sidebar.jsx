@@ -1,0 +1,12 @@
+import { NavLink } from 'react-router-dom'
+import { Activity, Bookmark, GraduationCap, Layers, LayoutDashboard, Stethoscope, X } from 'lucide-react'
+const links = [
+  { to: '/', label: 'Dashboard', Icon: LayoutDashboard },
+  { to: '/new-case', label: 'New case', Icon: Stethoscope },
+  { to: '/flashcards', label: 'Flashcards', Icon: Layers },
+  { to: '/bookmarks', label: 'Bookmarks', Icon: Bookmark },
+  { to: '/profile', label: 'My learning', Icon: GraduationCap },
+]
+export default function Sidebar({ open, onClose }) {
+  return <><div className={`fixed inset-0 z-40 bg-[#392630]/30 transition lg:hidden ${open ? 'visible opacity-100' : 'invisible opacity-0'}`} onClick={onClose}/><aside className={`fixed inset-y-0 left-0 z-50 flex w-[260px] flex-col border-r border-[#f1e4e9] bg-[#fffdfd] px-5 py-6 transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}><div className="mb-12 flex items-center justify-between"><div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f9e4ec] text-[#b84f78]"><Activity size={23}/></div><div><p className="font-editorial text-xl font-semibold text-[#75415a]">Pink Pink</p><p className="text-[10px] font-semibold uppercase tracking-[.17em] text-[#b27b92]">Doctor</p></div></div><button className="text-[#987c89] lg:hidden" onClick={onClose}><X/></button></div><p className="mb-3 px-3 text-[10px] font-bold uppercase tracking-[.18em] text-[#b49da8]">Workspace</p><nav className="space-y-1">{links.map(({to,label,Icon}) => <NavLink key={to} to={to} end={to === '/'} onClick={onClose} className={({isActive}) => `flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium transition ${isActive ? 'bg-[#fbedf2] text-[#a9436b]' : 'text-[#816d77] hover:bg-[#fff5f8] hover:text-[#a9436b]'}`}><Icon size={18}/>{label}</NavLink>)}</nav><div className="mt-auto rounded-2xl bg-[#fff2f6] p-4"><p className="font-editorial text-lg text-[#75415a]">A little reminder</p><p className="mt-2 text-xs leading-5 text-[#987486]">Good clinicians stay curious. Keep asking thoughtful questions.</p><div className="mt-3 text-xl">♡</div></div><p className="mt-5 text-center text-[10px] text-[#b49da8]">Made for curious medical minds</p></aside></>
+}
